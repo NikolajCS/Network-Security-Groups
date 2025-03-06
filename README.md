@@ -32,12 +32,12 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 - Step 4
 
 
-Step 1 is to create 2 virtual machines in Microsost Azure and make sure they are both in the same virtual network/subnet and ressource group. 
+Step 1 is to create 2 virtual machines in Microsoft Azure and make sure they are both in the same virtual network/subnet and ressource group. 
 We will then connect to the Windows Virtual Machine via Remote Dekstop. Find the public IP adress of your vm in Azure and paste it into Remote Dekstop
 
 ![image](https://github.com/user-attachments/assets/98eedc60-a17d-4154-9a8d-d9acfc5d1954)
 
-We will then install a protocol analyzer to observe network traffic in this tutorial we will use Wireshark. > Log in to the windows vm > open a browser > https://www.wireshark.org/ > Download > follow the install configuration, you can just use all the default configurations
+We will then install a protocol analyzer to observe network traffic in this tutorial we will use Wireshark. > Log in to the Windows vm > open a browser > https://www.wireshark.org/ > Download > follow the install configuration, you can just use all the default configurations
 
 ![image](https://github.com/user-attachments/assets/0f6d199c-f940-4cc2-b372-0eaff02ef3d0)
 
@@ -47,7 +47,7 @@ You can now see all the network traffic happening
 
 ![image](https://github.com/user-attachments/assets/019f0f9a-aea4-400c-828e-f1c10be56da7)
 
-We will now ping the Linux vm from within the Windows vm and observe the traffic via Whireshark. So first we need to find our Linux virtual machines private IP adress > Go to Portal.Azure.com > Virtual Machines > click on your Linux vm > Look for the private IP adresse> Now open your windows virtual machine > Open Whireshark and filter to icmp traffic > Simply type icmp in the top collum in Whireshark > Open Powershell as an admin > ping "IP adresse" 
+We will now ping the Linux vm from within the Windows vm and observe the traffic via Whireshark. So first we need to find our Linux virtual machines private IP address > Go to Portal.Azure.com > Virtual Machines > click on your Linux vm > Look for the private IP adresse> Now open your windows virtual machine > Open Whireshark and filter to icmp traffic > Simply type icmp in the top collum in Whireshark > Open Powershell as an admin > ping the Linux vm's private IP address, command: Ping "IP address"  
 ![image](https://github.com/user-attachments/assets/35825717-f93f-42f8-9133-2859ae87b4de)
 
 Now we will setup a firewall within the Linux-vm, which will block the ping requests from the Windows vm > Go to Azure Portal > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
