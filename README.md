@@ -21,15 +21,29 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>Operating Systems Used </h2>
 
-- Windows 10 (21H2)
+- Windows 11 Pro (24H2)
 - Ubuntu Server 20.04
 
-<h2>High-Level Steps</h2>
+<h2> Basic Steps</h2>
 
-- Step 1
-- Step 2
+- We need 2 Virtual Machines. I will use one Windows vm and one Linux vm
+- We will use Remote Desktop to connect to them
 - Step 3
 - Step 4
+
+
+Step 1 is to create 2 virtual machines in Microsost Azure and make sure they are both in the same virtual network/subnet and ressource group. 
+We will then connect to the Windows Virtual Machine via Remote Dekstop. Find the public ipadress of your vm in Azure and paste it into Remote Dekstop
+
+![image](https://github.com/user-attachments/assets/98eedc60-a17d-4154-9a8d-d9acfc5d1954)
+
+We will then install a protocol analyzer to observe network traffic in this tutorial we will use Wireshark. > Log in to the windows vm > open a browser > https://www.wireshark.org/ > Download > follow the instal configuration, you can just use all the default configurations
+
+![image](https://github.com/user-attachments/assets/0f6d199c-f940-4cc2-b372-0eaff02ef3d0)
+
+
+
+
 
 <h2>Actions and Observations</h2>
 
