@@ -63,6 +63,31 @@ If we go back into the Windows VM, and use the ping command we will get a "Reque
 ![image](https://github.com/user-attachments/assets/06b1933f-d9d1-411d-8939-a973497a099d)
 
 
+Observing SSH traffic: > Log in to your Windows VM > Open Wireshark and filter for "ssh" traffic > Open Powershell as an admin > run the command ssh + Linux VM usersname + its private IP address for example: ssh jokeren@10.2.0.5 > yes > enter password > When you are entering your password nothing will show, that is for security reasons it will still register what you are typing.
+
+![image](https://github.com/user-attachments/assets/70aaa978-3a8a-42e5-8697-67a3a46593b2)
+
+We are now connected to the Linux-vm via ssh. You can type some random stuff in powershell and inspect it in Wireshark. You will see that the data is encrypted so we cannot see what the actual packets contain. This is because SSH is a secure connection that encrypts the data
+
+![image](https://github.com/user-attachments/assets/3c0679ce-b47a-41b5-ae08-08d60aa83f7a)
+
+Exit the connection > Powershell command > "exit" 
+
+![image](https://github.com/user-attachments/assets/8aae2feb-7931-4a1b-942d-e70e281cfbae)
+
+Observing DHCP Traffic: The usual process is: Discover, Offer, Request, Acknowlegde. To observe this we need to make a bat file. Open notepad > Type Ipconfig /release ipconfig /renew
+
+![image](https://github.com/user-attachments/assets/63a59006-e0f2-41d1-8fa8-0c935bf6f3d4)
+
+Now save it on the directory C:\ProgramData > name it dhcp.bat and save as all files 
+
+![image](https://github.com/user-attachments/assets/181e87a8-7119-4149-9daa-523d571633f6)
+
+Open powershell as an administrator > type: cd c:\programdata > enter > type: ls > enter > type: .\dhcp.bat > enter > the command should almost instantantiously use the release and renew command simoultaniously so we do not lose the connection to the VM and in Whireshark we can observe the dchp traffic
+
+![image](https://github.com/user-attachments/assets/2f8ffda8-067a-400e-a8c7-9b560b59d6f4)
+
+
 
 <h2>Actions and Observations</h2>
 
