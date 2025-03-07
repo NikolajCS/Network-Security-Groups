@@ -87,7 +87,15 @@ Open powershell as an administrator > type: cd c:\programdata > enter > type: ls
 
 ![image](https://github.com/user-attachments/assets/2f8ffda8-067a-400e-a8c7-9b560b59d6f4)
 
+Observing dns: This is very simple > In Whireshark filter for "dsn" > Open Powershell > type: nslookup any website > example: nslookup facebook.com or nslookup youtube.com
 
+![image](https://github.com/user-attachments/assets/49c8b652-b55a-4aae-aa4d-457fcd67195d)
+
+Obersving RDP: (Remote Dekstop Protocol) > In Whireshark filter for rdp > There will be a lot of traffic because we are connected through remote desktop
+
+![image](https://github.com/user-attachments/assets/b3f3509f-057b-4ec4-9424-55b103d75411)
+
+This is the end of the tutorial! 
 
 <h2>Actions and Observations</h2>
 
