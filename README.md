@@ -6,9 +6,8 @@
 </p>
 
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
-In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
 
-
+This is a tutorial where I will be observing and inspecting network traffic between Azure Virtual Machines as well as experiemnt with Network Security Groups. In the tutorial I will be filtering different network protocols such as ICMP, SSH, DHCP, DNS and RDP and I will be observing the traffic. I will go over how to setup a basic firewall to block ICMP traffic and use a couple of network command-line utilities/tools
 
 
 <h2>Environments and Technologies Used</h2>
@@ -24,15 +23,36 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 - Windows 11 Pro (24H2)
 - Ubuntu Server 20.04
 
+
 <h2> Basic Steps</h2>
 
 - We need 2 Virtual Machines. I will use one Windows vm and one Linux vm
 - We will use Remote Desktop to connect to them
-- Step 3
+- I will use Wireshark to observe the network traffic
 - Step 4
+
+  <h2> The Tutorial </h2>
+
+This picture here basically shows what I will be doing in this tutorial.
+
+![image](https://github.com/user-attachments/assets/a5a2f4b8-1914-45ef-a29f-d629194a63b4)
 
 
 Step 1: Create 2 virtual machines in Microsoft Azure and make sure they are both in the same virtual network/subnet and ressource group. 
+The first step will be to open Azure.Portal.com in your browser > Create a ressource group > You can name it whatever suit you best > Review + Create > Create
+
+![image](https://github.com/user-attachments/assets/479bf6d4-2f81-447a-89df-b7182941e824)
+
+Next I will create a Virtual Machine > Azure.Portal.com > Virtual Machines > Create > Make sure to choose the ressource group you just created, so I will choose "Network-Activities-RG > Under image, choose: Windows 10 Pro, version 22h2 -x64 Gen2 > Create Administrator Account > fill out Username + Password > Make sure to check the Licensing box > Review + Create > Create > Azure will automatically create a new Virtual Network for the VM, but if you want to create your own and choose the name yourself, you can do so under "Networking" > Virtual Network > Create new > fill out the information > OK 
+
+![image](https://github.com/user-attachments/assets/d81781bd-9dd1-41e7-9615-f2c9aa7649b6)
+
+Next we will need to create another VM, this will be the Linux VM. > The exact same steps as before, I will name this Virtual Machine Linux-VM2 > make sure to choose the same ressource group, region and Virtual Network as the Windows-VM. Choose Ubunto Server 22 under Image > Under "Authentication Type, choose password > fill out username + password > Check licensing > Review + Create > Create (The VM should automatically put the VM in the same Virtual Network that it created before but to double check this > Click Next until you get to "Networking" and check Virtual network is the same as the Windows VM.
+
+![image](https://github.com/user-attachments/assets/97005626-e28d-4be6-b98f-9fec75eacb46)
+
+
+
 I will then connect to the Windows Virtual Machine via Remote Dekstop. To do that I will get the public IP adress of the Windows vm, which can be found in Microsoft Azure and paste it into Remote Dekstop
 
 ![image](https://github.com/user-attachments/assets/98eedc60-a17d-4154-9a8d-d9acfc5d1954)
