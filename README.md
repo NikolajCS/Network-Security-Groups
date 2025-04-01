@@ -32,12 +32,12 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 - Step 4
 
 
-Step 1 is to create 2 virtual machines in Microsoft Azure and make sure they are both in the same virtual network/subnet and ressource group. 
-We will then connect to the Windows Virtual Machine via Remote Dekstop. Find the public IP adress of your vm in Azure and paste it into Remote Dekstop
+Step 1: Create 2 virtual machines in Microsoft Azure and make sure they are both in the same virtual network/subnet and ressource group. 
+I will then connect to the Windows Virtual Machine via Remote Dekstop. To do that I will get the public IP adress of the Windows vm, which can be found in Microsoft Azure and paste it into Remote Dekstop
 
 ![image](https://github.com/user-attachments/assets/98eedc60-a17d-4154-9a8d-d9acfc5d1954)
 
-We will then install a protocol analyzer to observe network traffic in this tutorial we will use Wireshark. > Log in to the Windows vm > open a browser > https://www.wireshark.org/ > Download > follow the install configuration, you can just use all the default configurations
+I will then install a protocol analyzer to observe network traffic. In this tutorial I will be using Wireshark. > Log in to the Windows vm > open a browser > https://www.wireshark.org/ > Download > follow the install configuration, you can simply use all the default configurations
 
 ![image](https://github.com/user-attachments/assets/0f6d199c-f940-4cc2-b372-0eaff02ef3d0)
 
@@ -47,10 +47,10 @@ You can now see all the network traffic happening
 
 ![image](https://github.com/user-attachments/assets/019f0f9a-aea4-400c-828e-f1c10be56da7)
 
-We will now ping the Linux vm from within the Windows vm and observe the traffic via Whireshark. So first we need to find our Linux virtual machines private IP address > Go to Portal.Azure.com > Virtual Machines > click on your Linux vm > Look for the private IP adresse> Now open your windows virtual machine > Open Whireshark and filter to icmp traffic > Simply type icmp in the top collum in Whireshark > Open Powershell as an admin > ping the Linux vm's private IP address, command: Ping "IP address"  
+I will now ping the Linux vm from within the Windows vm and observe the traffic via Whireshark. So first I will find Linux virtual machines private IP address > Go to Microsoft Azure > Virtual Machines > click on your Linux vm > Look for the private IP adresse> Now open your Windows virtual machine > Open Whireshark and filter to icmp traffic > Simply type icmp in the top collum in Whireshark > Open Powershell as an admin > ping the Linux vm's private IP address, command: Ping "IP address"  
 ![image](https://github.com/user-attachments/assets/35825717-f93f-42f8-9133-2859ae87b4de)
 
-Now we will setup a firewall within the Linux-vm, which will block the ping requests from the Windows vm > Go to Azure Portal > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
+I will now setup a firewall within the Linux-vm, which will block the ping requests from the Windows vm > Go to Microsoft Azure Portal > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
 ![image](https://github.com/user-attachments/assets/86d6f88f-cead-4ff9-9c1d-7f6898ac77e0)
 
 In "Linux-vm-nsg > Settings > Inbound security rules > add > Put "Destination port ranges" to * > Protocol to "ICMPv4" > Action: Deny > Priority: 290 > Add
@@ -63,11 +63,11 @@ If we go back into the Windows VM, and use the ping command we will get a "Reque
 ![image](https://github.com/user-attachments/assets/06b1933f-d9d1-411d-8939-a973497a099d)
 
 
-Observing SSH traffic: > Log in to your Windows VM > Open Wireshark and filter for "ssh" traffic > Open Powershell as an admin > run the command ssh + Linux VM usersname + its private IP address for example: ssh jokeren@10.2.0.5 > yes > enter password > When you are entering your password nothing will show, that is for security reasons it will still register what you are typing.
+Observing SSH traffic (Secure Shell) > Log in to your Windows VM > Open Wireshark and filter for "ssh" traffic > Open Powershell as an admin > run the command ssh + Linux VM usersname + its private IP address for example: ssh jokeren@10.2.0.5 > yes > enter password > When you are entering your password nothing will show, that is for security reasons it will still register what you are typing.
 
 ![image](https://github.com/user-attachments/assets/70aaa978-3a8a-42e5-8697-67a3a46593b2)
 
-We are now connected to the Linux-vm via ssh. You can type some random stuff in powershell and inspect it in Wireshark. You will see that the data is encrypted so we cannot see what the actual packets contain. This is because SSH is a secure connection that encrypts the data
+We are now connected to the Linux-vm via ssh. You can type some random stuff in powershell and inspect it in Wireshark. You will see that the data is encrypted so we cannot see what the actual packets contain. This is because SSH is a secure connection and encrypts the data
 
 ![image](https://github.com/user-attachments/assets/3c0679ce-b47a-41b5-ae08-08d60aa83f7a)
 
@@ -75,7 +75,7 @@ Exit the connection > Powershell command > "exit"
 
 ![image](https://github.com/user-attachments/assets/8aae2feb-7931-4a1b-942d-e70e281cfbae)
 
-Observing DHCP Traffic: The usual process is: Discover, Offer, Request, Acknowlegde. To observe this we need to make a bat file. Open notepad > Type Ipconfig /release ipconfig /renew
+Observing DHCP Traffic (Dynamic Host Configuration Protocol): The DHCP process can be boiled down to -> Discover, Offer, Request, Acknowlegde. To observe this we need to make a bat file. Open notepad > Type Ipconfig /release, ipconfig /renew
 
 ![image](https://github.com/user-attachments/assets/63a59006-e0f2-41d1-8fa8-0c935bf6f3d4)
 
@@ -87,7 +87,7 @@ Open powershell as an administrator > type: cd c:\programdata > enter > type: ls
 
 ![image](https://github.com/user-attachments/assets/2f8ffda8-067a-400e-a8c7-9b560b59d6f4)
 
-Observing dns: This is very simple > In Whireshark filter for "dsn" > Open Powershell > type: nslookup any website > example: nslookup facebook.com or nslookup youtube.com
+Observing dns (Donaim Name System): This is very simple > In Whireshark filter for "dns" > Open Powershell > type: nslookup any website > example: nslookup facebook.com or nslookup youtube.com
 
 ![image](https://github.com/user-attachments/assets/49c8b652-b55a-4aae-aa4d-457fcd67195d)
 
