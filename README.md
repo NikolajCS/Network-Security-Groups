@@ -7,7 +7,6 @@
 
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
 
-This is a tutorial where I will be observing and inspecting network traffic between Azure Virtual Machines as well as experiment with Network Security Groups. In the tutorial I will be filtering different network protocols such as ICMP, SSH, DHCP, DNS and RDP and I will be observing the traffic. I will go over how to setup a basic firewall in Azure to block ICMP traffic and use a couple of different network command-line utilities/tools
 
 In this tutorial, I will observe and inspect network traffic between Azure Virtual Machines and experiment with Network Security Groups. In the tutorial I will be filtering different network protocols such as ICMP, SSH, DHCP, DNS and RDP and I will be observing the traffic. I will explain how to set up a basic firewall in Azure to block ICMP traffic and use various network command-line utilities and tools.
 
@@ -34,21 +33,22 @@ In this tutorial, I will observe and inspect network traffic between Azure Virtu
 
   <h2> The Tutorial </h2>
 
-The picture below basically shows what I will be doing in this tutorial.
+The diagram below basically illustrates the setup and objective of this tutorial. It should give you a good intuition of what this tutorial will be about. 
 
 ![image](https://github.com/user-attachments/assets/a5a2f4b8-1914-45ef-a29f-d629194a63b4)
 
 
 First I will create the resource group and then I will create 2 virtual machines. I will create the VMs (Virtual Machines) in Microsoft Azure and it is important to make sure that both VMs are in the same virtual network/subnet and resource group. 
-Open portal.azure.com in your browser > Create a resource group > You can name it whatever you like best > I will be naming mine "Network-Activities-RG" > Review + Create > Create
+Open portal.azure.com in your browser > Create a resource group > You can name it whatever you like > I will be naming mine "Network-Activities-RG" > Review + Create > Create
 
 ![image](https://github.com/user-attachments/assets/479bf6d4-2f81-447a-89df-b7182941e824)
 
-Next I will create a Virtual Machine > portal.azure.com > Virtual Machines > Create > Make sure to choose the resource group you just created, so I will choose "Network-Activities-RG > Under image, choose: Windows 10 Pro, version 22h2 -x64 Gen2 > Under Administrator Account > fill out Username + Password > Make sure to check the Licensing box > Review + Create > Create > Azure will automatically create a new Virtual Network for the VM, but if you want to create your own and choose the name yourself, you can do so under "Networking" > Virtual Network > Create new > fill out the information > OK 
+Next I will create a Virtual Machine > portal.azure.com > Virtual Machines > Create > Make sure to choose the resource group you just created, so I will choose "Network-Activities-RG > Under image, choose: Windows 10 Pro, version 22h2 -x64 Gen2 > Under Administrator Account > fill out Username + Password > Make sure to check the Licensing box > Under the Networking category, you can either allow Azure to auto-create a Virtual Network or create your own. I will let Azure auto create one, so I will just click > Review + Create > Create
+
 
 ![image](https://github.com/user-attachments/assets/d81781bd-9dd1-41e7-9615-f2c9aa7649b6)
 
-Next, we will need to create another VM, this will be the Linux VM. > The exact same steps as before apply here, I will name this Virtual Machine Linux-VM2 > make sure to choose the same Resource group, Region and Virtual Network as the Windows-VM. Choose Ubuntu Server 22 under Image > Under "Authentication Type: choose password > fill out username + password > Check licensing > Review + Create > Create - (The VM should automatically be put the in the same Virtual Network that it automatically created before for the Windows-VM, but to double check this > Click Next until you get to "Networking" and double check that the Virtual network is the same as the Windows VM.
+Next, we will need to create another VM, this will be the Linux VM. > The exact same steps as before apply here, I will name this Virtual Machine Linux-VM2 > make sure to choose the same Resource group, Region and Virtual Network as the Windows VM. If you let Azure auto create a Vnet for the Windows VM, verify that the Linux VM is also in that Vnet in the Networking Category > Choose Ubuntu Server 22 under Image > Under "Authentication Type: choose password > fill out username + password > Check licensing > Review + Create > Create
 
 ![image](https://github.com/user-attachments/assets/97005626-e28d-4be6-b98f-9fec75eacb46)
 
@@ -71,23 +71,23 @@ You can now see all the network traffic happening on the backend.
 
 ![image](https://github.com/user-attachments/assets/019f0f9a-aea4-400c-828e-f1c10be56da7)
 
-I will now ping the Linux vm from within the Windows vm and observe the traffic via Wireshark. So first I will find the Linux VMs private IP address > Go to Microsoft Azure > Virtual Machines > click on your Linux vm > Look for the private IP address > Now open your Windows virtual machine > Open Wireshark and filter to icmp traffic > In Wireshark, type 'icmp' in the filter bar at the top. > Open Powershell as an admin > ping the Linux VMs private IP address, command: Ping "IP address"  
+I will now ping the Linux vm from within the Windows vm and observe the traffic via Wireshark. So first I will find the Linux VMs private IP address > Go to Microsoft Azure > Virtual Machines > click on your Linux vm > Look for the private IP address > Now open your Windows virtual machine > Open Wireshark and filter to icmp traffic > In Wireshark, type 'icmp' in the filter bar at the top. > Open Powershell as an admin > ping the Linux VMs private IP address, command: ping "IP address"  
 ![image](https://github.com/user-attachments/assets/35825717-f93f-42f8-9133-2859ae87b4de)
 
-I will now setup a firewall within the Linux-vm, which will block the ping requests from the Windows vm > Go to portal.azure.com > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
+I will now setup a firewall within the Linux-vm, which will block the inbound ping requests from the Windows vm > Go to portal.azure.com > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
 ![image](https://github.com/user-attachments/assets/86d6f88f-cead-4ff9-9c1d-7f6898ac77e0)
 
 In "Linux-vm-nsg > Settings > Inbound security rules > add > Put "Destination port ranges" to * > Protocol to "ICMPv4" > Action: Deny > Priority: 290 > Add
 
 ![image](https://github.com/user-attachments/assets/e795d45f-28c4-4df3-8e13-0e853315a8b3)
 
-If we go back into the Windows VM, and use the ping command we will get a "Request timed out" and in Wireshark we will get no reply from the Linux VM. The firewall is now blocking the ping request from the Windows VM.
+If we go back into the Windows VM, and use the ping command we will get a "Request timed out" and in Wireshark we will get no reply from the Linux VM. The firewall is now blocking the ping request from the Windows VM. It will specifically block all inbound ping. 
 
 
 ![image](https://github.com/user-attachments/assets/06b1933f-d9d1-411d-8939-a973497a099d)
 
 
-Observing SSH traffic (Secure Shell) > Log in to your Windows VM > Open Wireshark and filter for "ssh" traffic > Open Powershell as an admin > run the command ssh + Linux VM usersname + its private IP address for example: ssh jokeren@10.2.0.5 > yes > enter password > When you are entering your password nothing will show, that is for security reasons it will still register what you are typing.
+Observing SSH traffic (Secure Shell, port 22 TCP) > Log in to your Windows VM > Open Wireshark and filter for "ssh" traffic > Open Powershell as an admin > run the command ssh + Linux VM usersname + its private IP address for example: ssh jokeren@10.2.0.5 > yes > enter password > When you are entering your password nothing will show, that is for security reasons it will still register what you are typing.
 
 ![image](https://github.com/user-attachments/assets/70aaa978-3a8a-42e5-8697-67a3a46593b2)
 
@@ -99,7 +99,7 @@ Exit the connection > Powershell command > "exit"
 
 ![image](https://github.com/user-attachments/assets/8aae2feb-7931-4a1b-942d-e70e281cfbae)
 
-Observing DHCP Traffic (Dynamic Host Configuration Protocol): The DHCP process can be boiled down to -> Discover, Offer, Request, Acknowlegde. To observe this we need to make a bat file. Open notepad > Type Ipconfig /release, ipconfig /renew
+Observing DHCP Traffic (Dynamic Host Configuration Protocol): The DHCP process can be boiled down to -> Discover, Offer, Request, Acknowlegde. To observe this we need to make a bat file. Open notepad > Type ipconfig /release, ipconfig /renew
 
 ![image](https://github.com/user-attachments/assets/63a59006-e0f2-41d1-8fa8-0c935bf6f3d4)
 
@@ -119,5 +119,5 @@ Observing RDP: (Remote Desktop Protocol) > In Wireshark filter for rdp > There w
 
 ![image](https://github.com/user-attachments/assets/b3f3509f-057b-4ec4-9424-55b103d75411)
 
-This concludes the tutorial
+This concludes the tutorial. You’ve now observed traffic from common protocols and experimented with blocking traffic using Network Security Groups. It’s a great way to get a feel for how networking works in Azure and how tools like Wireshark can help you see what’s going on behind the scenes. I hope you learned something valuable!
 
