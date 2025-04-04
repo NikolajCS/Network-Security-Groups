@@ -71,10 +71,10 @@ You can now see all the network traffic happening on the backend.
 
 ![image](https://github.com/user-attachments/assets/019f0f9a-aea4-400c-828e-f1c10be56da7)
 
-I will now ping the Linux vm from within the Windows vm and observe the traffic via Wireshark. So first I will find the Linux VMs private IP address > Go to Microsoft Azure > Virtual Machines > click on your Linux vm > Look for the private IP address > Now open your Windows virtual machine > Open Wireshark and filter to icmp traffic > In Wireshark, type 'icmp' in the filter bar at the top. > Open Powershell as an admin > ping the Linux VMs private IP address, command: ping "IP address"  
+I will now ping the Linux VM from within the Windows VM and observe the traffic via Wireshark. So first I will find the Linux VMs private IP address > Go to Microsoft Azure > Virtual Machines > click on your Linux VM > Look for the private IP address > Now open your Windows virtual machine > Open Wireshark and filter to icmp traffic > In Wireshark, type 'icmp' in the filter bar at the top. > Open Powershell as an admin > ping the Linux VMs private IP address, command: ping "IP address"  
 ![image](https://github.com/user-attachments/assets/35825717-f93f-42f8-9133-2859ae87b4de)
 
-I will now setup a firewall within the Linux-vm, which will block the inbound ping requests from the Windows vm > Go to portal.azure.com > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
+I will now setup a firewall within the Linux-VM, which will block the inbound ping requests from the Windows VM > Go to portal.azure.com > Virtual Machines > Your Linux VM > Networking > Network settings > On the right side click on > Network Security Group: Linux-vm-nsg 
 ![image](https://github.com/user-attachments/assets/86d6f88f-cead-4ff9-9c1d-7f6898ac77e0)
 
 In "Linux-vm-nsg > Settings > Inbound security rules > add > Put "Destination port ranges" to * > Protocol to "ICMPv4" > Action: Deny > Priority: 290 > Add
