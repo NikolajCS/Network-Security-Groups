@@ -119,5 +119,5 @@ Observing RDP: (Remote Desktop Protocol) > In Wireshark filter for rdp > There w
 
 ![image](https://github.com/user-attachments/assets/b3f3509f-057b-4ec4-9424-55b103d75411)
 
-This concludes the tutorial. You’ve now observed traffic from common protocols and experimented with blocking traffic using Network Security Groups. It’s a great way to get a feel for how networking works in Azure and how tools like Wireshark can help you see what’s going on behind the scenes. I hope you learned something valuable!
+This concludes the tutorial. You’ve now observed traffic from common protocols and experimented with blocking traffic using Network Security Groups. It’s a great way to get a feel for how networking works in Azure and how tools like Wireshark can help you see what’s going on behind the scenes. I hope you learned something new! 
 
