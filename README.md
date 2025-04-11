@@ -1,14 +1,20 @@
-# Network-Security-Groups
+# Monitoring and Managing VM Traffic in Azure with NSGs and Wireshark
+
+
+
+
 
 
 <p align="center">
 <img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
 </p>
 
-<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
+<h1>
+
+</h1>
 
 
-In this tutorial, I will observe and inspect network traffic between Azure Virtual Machines and experiment with Network Security Groups. In the tutorial I will be filtering different network protocols such as ICMP, SSH, DHCP, DNS and RDP and I will be observing the traffic. I will explain how to set up a basic firewall in Azure to block ICMP traffic and use various network command-line utilities and tools.
+In this tutorial, I will observe and inspect network traffic between Azure Virtual Machines and experiment with Network Security Groups (NSGs). In the tutorial I will be filtering different network protocols such as ICMP, SSH, DHCP, DNS and RDP and I will be observing the traffic. I will explain how to set up a basic firewall in Azure to block ICMP traffic and use various network command-line utilities and tools.
 
 
 <h2>Environments and Technologies Used</h2>
@@ -16,7 +22,7 @@ In this tutorial, I will observe and inspect network traffic between Azure Virtu
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Various Command-Line Tools
-- Various Network Protocols (SSH, RDP, DNS, HTTP/S, ICMP)
+- Various Network Protocols (SSH, RDP, DNS, ICMP)
 - Wireshark (Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
