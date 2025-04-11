@@ -22,7 +22,7 @@ In this tutorial, I will observe and inspect network traffic between Azure Virtu
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Various Command-Line Tools
-- Various Network Protocols (SSH, RDP, DNS, ICMP)
+- Network Protocols used (SSH, RDP, DNS, ICMP)
 - Wireshark (Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
