@@ -99,7 +99,7 @@ Exit the connection > Powershell command > "exit"
 
 ![image](https://github.com/user-attachments/assets/8aae2feb-7931-4a1b-942d-e70e281cfbae)
 
-Observing DHCP Traffic (Dynamic Host Configuration Protocol): The DHCP process can be boiled down to -> Discover, Offer, Request, Acknowlegde. To observe this we need to make a bat file. Open notepad > Type ipconfig /release, ipconfig /renew
+Observing DHCP Traffic (Dynamic Host Configuration Protocol): The full DHCP process can be boiled down to -> Discover, Offer, Request, Acknowlegde. The following steps are not necessary - you can simply type DHCP in the filter bar and observe, however I will showcase the full DHCP process. To observe the full process we need to make a bat file. Open notepad > Type ipconfig /release, ipconfig /renew 
 
 ![image](https://github.com/user-attachments/assets/63a59006-e0f2-41d1-8fa8-0c935bf6f3d4)
 
