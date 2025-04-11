@@ -48,7 +48,7 @@ Next I will create a Virtual Machine > portal.azure.com > Virtual Machines > Cre
 
 ![image](https://github.com/user-attachments/assets/d81781bd-9dd1-41e7-9615-f2c9aa7649b6)
 
-Next, we will need to create another VM, this will be the Linux VM. > The exact same steps as before apply here, I will name this Virtual Machine Linux-VM2 > make sure to choose the same Resource group, Region and Virtual Network as the Windows VM. If you let Azure auto create a Vnet for the Windows VM, verify that the Linux VM is also in that Vnet in the Networking Category > Choose Ubuntu Server 22 under Image > Under "Authentication Type: choose password > fill out username + password > Check licensing > Review + Create > Create
+Next we will need to create another VM, this will be the Linux VM. > The exact same steps as before apply here, I will name this Virtual Machine Linux-VM2 > make sure to choose the same Resource group, Region and Virtual Network as the Windows VM. If you let Azure auto create a Vnet for the Windows VM, verify that the Linux VM is also in that Vnet in the Networking Category > Choose Ubuntu Server 22 under Image > Under "Authentication Type: choose password > fill out username + password > Check licensing > Review + Create > Create
 
 ![image](https://github.com/user-attachments/assets/97005626-e28d-4be6-b98f-9fec75eacb46)
 
