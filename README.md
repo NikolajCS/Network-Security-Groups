@@ -49,12 +49,12 @@ Open portal.azure.com in your browser > Create a resource group > You can name i
 
 ![image](https://github.com/user-attachments/assets/479bf6d4-2f81-447a-89df-b7182941e824)
 
-Next I will create a Virtual Machine > portal.azure.com > Virtual Machines > Create > Make sure to choose the resource group you just created, so I will choose "Network-Activities-RG > Under image, choose: Windows 10 Pro, version 22h2 -x64 Gen2 > Under Administrator Account > fill out Username + Password > Make sure to check the Licensing box > Under the Networking category, you can either allow Azure to auto-create a Virtual Network or create your own. I will let Azure auto create one, so I will just click > Review + Create > Create
+Next I will create a Virtual Machine > portal.azure.com > Virtual Machines > Create > Make sure to choose the resource group you just created, so I will choose "Network-Activities-RG > Under image, choose: Windows 10 Pro, version 22h2 -x64 Gen2 > Under Administrator Account > fill out Username + Password > Make sure to check the Licensing box > Under the Networking category, you can either allow Azure to auto-create a Virtual Network or create your own. I will let Azure auto create one, so I will just click > Review + Create > Create 
 
 
 ![image](https://github.com/user-attachments/assets/d81781bd-9dd1-41e7-9615-f2c9aa7649b6)
 
-Next we will need to create another VM, this will be the Linux VM. > The exact same steps as before apply here, I will name this Virtual Machine Linux-VM2 > make sure to choose the same Resource group, Region and Virtual Network as the Windows VM. If you let Azure auto create a Vnet for the Windows VM, verify that the Linux VM is also in that Vnet in the Networking Category > Choose Ubuntu Server 22 under Image > Under "Authentication Type: choose password > fill out username + password > Check licensing > Review + Create > Create
+Next we will need to create another VM, this will be the Linux VM. > The exact same steps as before apply here, I will name this Virtual Machine Linux-VM2 > make sure to choose the same Resource group, Region and Virtual Network as the Windows VM. If you let Azure auto create a Vnet for the Windows VM, verify that the Linux VM is also in that Vnet in the Networking Category > In my case Azure auto created the Vnet Windows-VM1-vnet for my Windows VM, so this is the one I will choose for my Linux VM aswell. (It will be the default Vnet if you have no other Vnets) Next Choose Ubuntu Server 22 under Image > Under "Authentication Type: choose password > fill out username + password > Check licensing > Review + Create > Create
 
 ![image](https://github.com/user-attachments/assets/97005626-e28d-4be6-b98f-9fec75eacb46)
 
