@@ -39,7 +39,7 @@ In this tutorial, I will observe and inspect network traffic between Azure Virtu
 
   <h2> The Tutorial </h2>
 
-The diagram below basically illustrates the setup and objective of this tutorial. It should give you a good intuition of what this tutorial will be about. 
+The diagram below basically illustrates the setup and objective of this tutorial.
 
 ![image](https://github.com/user-attachments/assets/a5a2f4b8-1914-45ef-a29f-d629194a63b4)
 
