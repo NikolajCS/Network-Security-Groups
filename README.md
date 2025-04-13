@@ -71,7 +71,7 @@ The diagram below basically illustrates the setup and objective of this tutorial
 
 - Now I will connect to the Windows Virtual Machine via Remote Desktop.
 
-- To do that I will get the public IP adress of the Windows vm, which can be found in Microsoft Azure > Virtual Machines > Next to the Virtual Machine, you will see the public IP address and paste it into Remote Desktop
+- To do that I will get the public IP adress of the Windows VM, which can be found in Microsoft Azure > Virtual Machines > Next to the Virtual Machine, you will see the public IP address and paste it into Remote Desktop
 
 ![image](https://github.com/user-attachments/assets/db322e33-9432-49a4-a1f5-bd1891ce9d71)
 
@@ -85,7 +85,7 @@ The diagram below basically illustrates the setup and objective of this tutorial
 
 - Now we will install a protocol analyzer to observe network traffic. In this tutorial I will be using Wireshark.
 
-- Log in to the Windows vm via Remote Desktop > open a browser in the VM > https://www.wireshark.org/ > Download > follow the install configuration, you can simply use all the default configurations
+- Log in to the Windows VM via Remote Desktop > open a browser in the VM > https://www.wireshark.org/ > Download > follow the install configuration, you can simply use all the default configurations
 
 ![image](https://github.com/user-attachments/assets/0f6d199c-f940-4cc2-b372-0eaff02ef3d0)
 
@@ -136,9 +136,9 @@ The diagram below basically illustrates the setup and objective of this tutorial
 
 - Observing DHCP Traffic (Dynamic Host Configuration Protocol, port 67 and 68 UDP)
 
-- The full DHCP process can be boiled down to -> Discover, Offer, Request, Acknowlegde. The following steps are not necessary - you can simply type DHCP in the filter bar and observe, however for the sake of this tutorial I will showcase the full DHCP process.
+- The full DHCP process can be boiled down to -> Discover, Offer, Request, Acknowledge. The following steps are not necessary - you can simply type DHCP in the filter bar and observe, however for the sake of this tutorial I will showcase the full DHCP process.
 
-- To observe the full process we need to make a bat file. Open notepad > Type ipconfig /release, ipconfig /renew 
+- To force the full process we need to make a bat file. Open notepad > Type ipconfig /release, ipconfig /renew 
 
 ![image](https://github.com/user-attachments/assets/63a59006-e0f2-41d1-8fa8-0c935bf6f3d4)
 
